@@ -1,17 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[13]:
-
-
 from BaseTrader import BaseTrader
 import pandas as pd
 import numpy as np
 import pickle
-
-
-# In[14]:
-
 
 class ConTrader(BaseTrader):
     '''
@@ -36,9 +26,6 @@ class ConTrader(BaseTrader):
         df["returns"] = np.log(df[self.instrument] / df[self.instrument].shift())
         df["position"] = -np.sign(df.returns.rolling(self.window).mean())
         self.data = df.copy()
-
-
-# In[15]:
 
 
 class SMATrader(BaseTrader):
@@ -67,9 +54,6 @@ class SMATrader(BaseTrader):
         df["SMA_L"] = df[self.instrument].rolling(self.SMA_L).mean()
         df["position"] = np.where(df["SMA_S"] > df["SMA_L"], 1, -1)
         self.data = df.copy()
-
-
-# In[16]:
 
 
 class EMATrader(BaseTrader):
@@ -104,9 +88,6 @@ class EMATrader(BaseTrader):
         df["EMA_L"] = df[self.instrument].ewm(span=span_L, min_periods=self.EMA_L).mean()
         df["position"] = np.where(df["EMA_S"] > df["EMA_L"], 1, -1)
         self.data = df.copy()
-
-
-# In[17]:
 
 
 class BollingerTrader(BaseTrader):
@@ -146,9 +127,6 @@ class BollingerTrader(BaseTrader):
         self.data = df.copy()
 
 
-# In[18]:
-
-
 class MACDTrader(EMATrader):
     '''
     Trader class using Moving Average Convergence Divergence.
@@ -183,9 +161,6 @@ class MACDTrader(EMATrader):
         
         df["position"] = np.where(df["MACD"] > df["MACD_signal"], 1, -1)
         self.data = df.copy()
-
-
-# In[19]:
 
 
 class RSITrader(BaseTrader):
@@ -225,9 +200,6 @@ class RSITrader(BaseTrader):
         df['position'] = np.where(df['RSI'] < self.lower, 1, df['position'])
         df.fillna(0, inplace=True)
         self.data = df.copy()
-
-
-# In[20]:
 
 
 class MLTrader(BaseTrader):
