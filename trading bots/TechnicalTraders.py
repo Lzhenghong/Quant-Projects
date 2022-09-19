@@ -1,6 +1,17 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[13]:
+
+
 from BaseTrader import BaseTrader
 import pandas as pd
 import numpy as np
+import pickle
+
+
+# In[14]:
+
 
 class ConTrader(BaseTrader):
     '''
@@ -11,8 +22,8 @@ class ConTrader(BaseTrader):
     window: int
         period of simple moving average
     '''
-    def __init__(self, conf_file, instrument, bar_length, units, window):
-        super().__init__(conf_file, instrument, bar_length, units)
+    def __init__(self, conf_file, instrument, bar_length, units, stop, window):
+        super().__init__(conf_file, instrument, bar_length, units, stop)
         self.window = window
         
     def define_strategy(self): # "strategy-specific"
@@ -25,7 +36,10 @@ class ConTrader(BaseTrader):
         df["returns"] = np.log(df[self.instrument] / df[self.instrument].shift())
         df["position"] = -np.sign(df.returns.rolling(self.window).mean())
         self.data = df.copy()
-        
+
+
+# In[15]:
+
 
 class SMATrader(BaseTrader):
     '''
@@ -38,8 +52,8 @@ class SMATrader(BaseTrader):
     SMA_L: int
         longer period for simple moving average
     '''
-    def __init__(self, conf_file, instrument, bar_length, units, SMA_S, SMA_L):
-        super().__init__(conf_file, instrument, bar_length, units)
+    def __init__(self, conf_file, instrument, bar_length, units, stop, SMA_S, SMA_L):
+        super().__init__(conf_file, instrument, bar_length, units, stop)
         self.SMA_S = SMA_S
         self.SMA_L = SMA_L
         
@@ -53,7 +67,10 @@ class SMATrader(BaseTrader):
         df["SMA_L"] = df[self.instrument].rolling(self.SMA_L).mean()
         df["position"] = np.where(df["SMA_S"] > df["SMA_L"], 1, -1)
         self.data = df.copy()
-        
+
+
+# In[16]:
+
 
 class EMATrader(BaseTrader):
     '''
@@ -70,8 +87,8 @@ class EMATrader(BaseTrader):
     span_L: float
         longer period decay in terms of span
     '''
-    def __init__(self, conf_file, instrument, bar_length, units, EMA_S, span_S, EMA_L, span_L):
-        super().__init__(conf_file, instrument, bar_length, units)
+    def __init__(self, conf_file, instrument, bar_length, units, stop, EMA_S, span_S, EMA_L, span_L):
+        super().__init__(conf_file, instrument, bar_length, units, stop)
         self.EMA_S = EMA_S
         self.span_S = span_S
         self.EMA_L = EMA_L
@@ -87,7 +104,10 @@ class EMATrader(BaseTrader):
         df["EMA_L"] = df[self.instrument].ewm(span=span_L, min_periods=self.EMA_L).mean()
         df["position"] = np.where(df["EMA_S"] > df["EMA_L"], 1, -1)
         self.data = df.copy()
-        
+
+
+# In[17]:
+
 
 class BollingerTrader(BaseTrader):
     '''
@@ -100,8 +120,8 @@ class BollingerTrader(BaseTrader):
     num_sd: int
         number of standard deviations from SMA
     '''
-    def __init__(self, conf_file, instrument, bar_length, units, SMA, num_sd):
-        super().__init__(conf_file, instrument, bar_length, units)
+    def __init__(self, conf_file, instrument, bar_length, units, stop, SMA, num_sd):
+        super().__init__(conf_file, instrument, bar_length, units, stop)
         self.SMA = SMA
         self.num_sd = num_sd
         
@@ -124,7 +144,10 @@ class BollingerTrader(BaseTrader):
         df["position"] = df.position.ffill().fillna(0)
         
         self.data = df.copy()
-        
+
+
+# In[18]:
+
 
 class MACDTrader(EMATrader):
     '''
@@ -143,8 +166,8 @@ class MACDTrader(EMATrader):
     signal_period
         period for exponential moving average of MACD
     '''
-    def __init__(self, conf_file, instrument, bar_length, units, EMA_S, span_S, EMA_L, span_L, signal_period):
-        super().__init__(conf_file, instrument, bar_length, units, EMA_S, span_S, EMA_L, span_L)
+    def __init__(self, conf_file, instrument, bar_length, units, stop, EMA_S, span_S, EMA_L, span_L, signal_period):
+        super().__init__(conf_file, instrument, bar_length, units, stop, EMA_S, span_S, EMA_L, span_L)
         self.signal_period = signal_period
         
     def define_strategy(self):
@@ -162,6 +185,9 @@ class MACDTrader(EMATrader):
         self.data = df.copy()
 
 
+# In[19]:
+
+
 class RSITrader(BaseTrader):
     '''
     Trader class using Relative Strength Indicator.
@@ -175,8 +201,8 @@ class RSITrader(BaseTrader):
     lower: int
         lower RSI threshold to indicate overselling
     '''
-    def __init__(self, conf_file, instrument, bar_length, units, SMA, upper, lower):
-        super().__init__(conf_file, instrument, bar_length, units)
+    def __init__(self, conf_file, instrument, bar_length, units, stop, SMA, upper, lower):
+        super().__init__(conf_file, instrument, bar_length, units, stop)
         self.SMA = SMA
         self.upper = upper
         self.lower = lower
@@ -190,13 +216,51 @@ class RSITrader(BaseTrader):
         df = self.raw_data.copy()
         df['upper'] = np.where(df[self.instrument].diff() > 0, df[self.instrument].diff(), 0)
         df['lower'] = np.where(df[self.instrument].diff() < 0, -df[self.instrument].diff(), 0)
-        df['MA_upper'] = df['upper'].rolling(SMA).mean()
-        df['MA_lower'] = df['lower'].rolling(SMA).mean()
+        df['MA_upper'] = df['upper'].rolling(self.SMA).mean()
+        df['MA_lower'] = df['lower'].rolling(self.SMA).mean()
         df['RSI'] = df['MA_upper']/(df['MA_upper'] + df['MA_lower']) * 100
         df.dropna(inplace=True)
         
         df['position'] = np.where(df['RSI'] > self.upper, -1, np.nan)
         df['position'] = np.where(df['RSI'] < self.lower, 1, df['position'])
         df.fillna(0, inplace=True)
+        self.data = df.copy()
+
+
+# In[20]:
+
+
+class MLTrader(BaseTrader):
+    '''
+    Trader class using fitted Machine Learning.
+    
+    Attributes
+    ----------
+    lags: int
+        number of lags to fit input into model
+    model: object
+        machine learning model
+    '''
+    def __init__(self, conf_file, instrument, bar_length, units, stop, lags, model):
+        super().__init__(conf_file, instrument, bar_length, units, stop)
+        self.lags = lags
+        self.model = model
+        
+    def define_strategy(self):
+        '''
+        Predict position based on lagged returns.
+        '''
+        df = self.raw_data.copy()
+        
+        df = df.append(self.tick_data)
+        df["returns"] = np.log(df[self.instrument] / df[self.instrument].shift())
+        cols = []
+        for lag in range(1, self.lags + 1):
+            col = "lag{}".format(lag)
+            df[col] = df.returns.shift(lag)
+            cols.append(col)
+        df.dropna(inplace = True)
+        df["position"] = lm.predict(df[cols])
+        
         self.data = df.copy()
 

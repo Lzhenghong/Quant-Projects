@@ -1,8 +1,18 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
 import pandas as pd
 import numpy as np
 import tpqoa
 from datetime import datetime, timedelta
 import time
+
+
+# In[ ]:
+
 
 class BaseTrader(tpqoa.tpqoa):
     '''
@@ -30,8 +40,10 @@ class BaseTrader(tpqoa.tpqoa):
         -1 for short, 0 for neutral, 1 for long
     profits: list
         stores trade profits each time position changes
+    stop: str
+        time to stop trading session, in HH:MM format
     '''
-    def __init__(self, conf_file, instrument, bar_length, units):
+    def __init__(self, conf_file, instrument, bar_length, units, stop):
         super().__init__(conf_file)
         self.instrument = instrument
         self.bar_length = pd.to_timedelta(bar_length)
@@ -42,6 +54,7 @@ class BaseTrader(tpqoa.tpqoa):
         self.units = units
         self.position = 0
         self.profits = []
+        self.stop = stop
     
     def get_most_recent(self, days = 5):
         '''
@@ -77,6 +90,9 @@ class BaseTrader(tpqoa.tpqoa):
         print(self.ticks, end = " ", flush = True)
         
         recent_tick = pd.to_datetime(time)
+        if recent_tick.time() >= pd.to_datetime(self.stop).time():
+            self.stop_stream = True
+            
         df = pd.DataFrame({self.instrument:(ask + bid)/2}, 
                           index = [recent_tick])
         self.tick_data = self.tick_data.append(df)
