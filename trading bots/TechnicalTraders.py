@@ -141,7 +141,7 @@ class MACDTrader(EMATrader):
         longer period for exponential moving average
     span_L: float
         longer period decay in terms of span
-    signal_period
+    signal_period: int
         period for exponential moving average of MACD
     '''
     def __init__(self, conf_file, instrument, bar_length, units, stop, EMA_S, span_S, EMA_L, span_L, signal_period):
