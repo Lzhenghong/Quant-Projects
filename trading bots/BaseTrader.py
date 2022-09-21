@@ -106,7 +106,30 @@ class BaseTrader(tpqoa.tpqoa):
         pass
     
     def execute_trades(self):
-        pass
+        if self.data["position"].iloc[-1] == 1:
+            if self.position == 0:
+                order = self.create_order(self.instrument, self.units, suppress = True, ret = True)
+                self.report_trade(order, "GOING LONG")
+            elif self.position == -1:
+                order = self.create_order(self.instrument, self.units * 2, suppress = True, ret = True) 
+                self.report_trade(order, "GOING LONG")
+            self.position = 1
+        elif self.data["position"].iloc[-1] == -1: 
+            if self.position == 0:
+                order = self.create_order(self.instrument, -self.units, suppress = True, ret = True)
+                self.report_trade(order, "GOING SHORT")
+            elif self.position == 1:
+                order = self.create_order(self.instrument, -self.units * 2, suppress = True, ret = True)
+                self.report_trade(order, "GOING SHORT")
+            self.position = -1
+        elif self.data["position"].iloc[-1] == 0: 
+            if self.position == -1:
+                order = self.create_order(self.instrument, self.units, suppress = True, ret = True) 
+                self.report_trade(order, "GOING NEUTRAL")
+            elif self.position == 1:
+                order = self.create_order(self.instrument, -self.units, suppress = True, ret = True)
+                self.report_trade(order, "GOING NEUTRAL")
+            self.position = 0
     
     def report_trade(self, order, going):
         '''
