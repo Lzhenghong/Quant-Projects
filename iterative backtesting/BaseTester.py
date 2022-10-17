@@ -10,7 +10,7 @@ class BaseTester():
     Attributes
         ----------
         raw: DataFrame Object
-            contains price, spread and date information of instrument
+            columns = [price, spread], index = date
         data: DataFrame object
             contains other trading information
         symbol: str
@@ -34,7 +34,7 @@ class BaseTester():
         position: int
             -1 for short, 0 for neutral, 1 for long
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread = True):
+    def __init__(self, data, symbol, start, end, amount, use_spread = True, print_log = False):
         self.raw = data
         self.data = None
         self.symbol = symbol
@@ -46,6 +46,7 @@ class BaseTester():
         self.trades = 0
         self.position = 0
         self.use_spread = use_spread
+        self.print_log = print_log
         
         self.process_data()
     
@@ -54,8 +55,7 @@ class BaseTester():
         Calculate returns of buy-and-hold strategy.
         '''
         temp = self.raw.copy()
-        temp = temp.loc[self.start:self.end].copy()
-        temp["returns"] = np.log(temp.price / temp.price.shift(1))
+        temp = temp.loc[self.start:self.end]
         self.data = temp
 
     def plot_data(self, cols = None):  
@@ -80,7 +80,8 @@ class BaseTester():
         Prints out the current (cash) balance.
         '''
         date, price, spread = self.get_values(bar)
-        print("{} | Current Balance: {}".format(date, round(self.current_balance, 2)))
+        if self.print_log:
+            print("{} | Current Balance: {}".format(date, round(self.current_balance, 2)))
         
     def buy_instrument(self, bar, units = None, amount = None):
         ''' 
@@ -94,7 +95,8 @@ class BaseTester():
         self.current_balance -= units * price 
         self.units += units
         self.trades += 1
-        print("{} |  Buying {} for {}".format(date, units, round(price, 5)))
+        if self.print_log:
+            print("{} |  Buying {} for {}".format(date, units, round(price, 5)))
     
     def sell_instrument(self, bar, units = None, amount = None):
         ''' 
@@ -108,7 +110,8 @@ class BaseTester():
         self.current_balance += units * price
         self.units -= units
         self.trades += 1
-        print("{} |  Selling {} for {}".format(date, units, round(price, 5)))
+        if self.print_log:
+            print("{} |  Selling {} for {}".format(date, units, round(price, 5)))
     
     def print_current_position_value(self, bar):
         ''' 
@@ -116,7 +119,8 @@ class BaseTester():
         '''
         date, price, spread = self.get_values(bar)
         cpv = self.units * price
-        print("{} |  Current Position Value = {}".format(date, round(cpv, 2)))
+        if self.print_log:
+            print("{} |  Current Position Value = {}".format(date, round(cpv, 2)))
     
     def print_current_nav(self, bar):
         ''' 
@@ -124,7 +128,8 @@ class BaseTester():
         '''
         date, price, spread = self.get_values(bar)
         nav = self.current_balance + self.units * price
-        print("{} |  Net Asset Value = {}".format(date, round(nav, 2)))
+        if self.print_log:
+            print("{} |  Net Asset Value = {}".format(date, round(nav, 2)))
         
     def go_long(self, bar, units = None, amount = None):
         '''
@@ -163,18 +168,21 @@ class BaseTester():
         Closes out a long or short position and go neutral.
         '''
         date, price, spread = self.get_values(bar)
-        print(75 * "-")
-        print("{} | +++ CLOSING FINAL POSITION +++".format(date))
+        if self.print_log:
+            print(75 * "-")
+            print("{} | +++ CLOSING FINAL POSITION +++".format(date))
         self.current_balance += self.units * price
         self.current_balance -= (abs(self.units) * spread/2 * self.use_spread) # substract half-spread costs
-        print("{} | closing position of {} for {}".format(date, self.units, price))
+        if self.print_log:
+            print("{} | closing position of {} for {}".format(date, self.units, price))
         self.units = 0 
         self.trades += 1
         perf = (self.current_balance - self.initial_balance) / self.initial_balance * 100
         self.print_current_balance(bar)
-        print("{} | net performance (%) = {}".format(date, round(perf, 2) ))
-        print("{} | number of trades executed = {}".format(date, self.trades))
-        print(75 * "-")
+        if self.print_log:
+            print("{} | net performance (%) = {}".format(date, round(perf, 2) ))
+            print("{} | number of trades executed = {}".format(date, self.trades))
+            print(75 * "-")
         
     def pre_test_cleanup(self, strategy):
         '''
@@ -182,9 +190,10 @@ class BaseTester():
         Display test title for logging purposes.
         '''
         title = 'Testing {} strategy | {}'.format(strategy, self.symbol)
-        print("-" * 75)
-        print(title)
-        print("-" * 75)
+        if self.print_log:
+            print("-" * 75)
+            print(title)
+            print("-" * 75)
         
         self.position = 0  
         self.trades = 0  

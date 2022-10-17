@@ -13,8 +13,8 @@ class MLTester(BaseTester):
     model: object
         machine learning model
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, lags, model):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, lags, model, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.lags = lags
         self.model = model
     

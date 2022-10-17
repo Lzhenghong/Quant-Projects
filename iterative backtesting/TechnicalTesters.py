@@ -10,8 +10,8 @@ class ConTester(BaseTester):
     window: int
         period of simple moving average
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, window):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, window, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.window = window
         
     def test_strategy(self):
@@ -43,8 +43,8 @@ class SMATester(BaseTester):
     SMA_L: int
         longer period of simple moving average
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, SMA_S, SMA_L):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, SMA_S, SMA_L, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.SMA_S = SMA_S
         self.SMA_L = SMA_L
         
@@ -82,8 +82,8 @@ class EMATester(BaseTester):
     span_L: float
         longer period decay in terms of span
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, EMA_S, span_S, EMA_L, span_L):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, EMA_S, span_S, EMA_L, span_L, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.EMA_S = EMA_S
         self.span_S = span_S
         self.EMA_L = EMA_L
@@ -125,8 +125,8 @@ class MACDTester(EMATester):
     signal_period: int
         period for exponential moving average of MACD
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, EMA_S, span_S, EMA_L, span_L, signal_period):
-        super().__init__(data, symbol, start, end, amount, use_spread, EMA_S, span_S, EMA_L, span_L)
+    def __init__(self, data, symbol, start, end, amount, use_spread, EMA_S, span_S, EMA_L, span_L, signal_period, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, EMA_S, span_S, EMA_L, span_L, print_log)
         self.signal_period = signal_period
         
     def test_strategy(self):
@@ -161,8 +161,8 @@ class BollingerTester(BaseTester):
     num_sd: int
         number of standard deviations from SMA
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, SMA, num_sd):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, SMA, num_sd, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.SMA = SMA
         self.num_sd = num_sd
         
@@ -205,8 +205,8 @@ class RSITester(BaseTester):
     lower: int
         lower RSI threshold to indicate overselling (0-100)
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, SMA, upper, lower):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, SMA, upper, lower, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.SMA = SMA
         self.upper = upper
         self.lower = lower
@@ -251,8 +251,8 @@ class StochOscTester(BaseTester):
     raw: DataFrame object
         columns = [open, high, low, close, spread], index = date
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, fast, slow):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, fast, slow, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.fast = fast
         self.slow = slow
         
@@ -297,8 +297,8 @@ class PivotPointTester(BaseTester):
     raw: DataFrame object
         columns = [open, high, low, close, open_d, high_d, low_d, close_d, spread], index = date
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         
     def get_values(self, bar):
         '''
@@ -354,8 +354,8 @@ class FibRetracementTester(BaseTester):
     raw: DataFrame object
         columns = [open, high, low, close, spread], index = date
     '''
-    def __init__(self, data, symbol, start, end, amount, use_spread, fib1, fib2, order):
-        super().__init__(data, symbol, start, end, amount, use_spread)
+    def __init__(self, data, symbol, start, end, amount, use_spread, fib1, fib2, order, print_log):
+        super().__init__(data, symbol, start, end, amount, use_spread, print_log)
         self.fib1 = fib1
         self.fib2 = fib2
         self.order = order
