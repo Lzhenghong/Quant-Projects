@@ -1,0 +1,51 @@
+2-step KMeans-Initialised Guassian Mixture Clustering with RandomForest classification
+
+Modified from: https://towardsdatascience.com/implementation-of-technical-indicators-into-a-machine-learning-framework-for-quantitative-trading-44a05be8e06
+
+1. Data Collection:
+- Scraped ticker data for each company in SP500 using BeautifulSoup
+- Loaded SPY and each SP500 ticker OHLC prices from 1/1/2011 to 31/12/2020 using yfinance 
+
+2. Data Preprocessing:
+- Calculated the following technical indicators for each ticker using 5 and 15 days period
+a. SMA Ratio
+b. SMA Volume Ratio
+c. ATR (Average True Range) Ratio
+d. ADX (Average Directional Index) Ratio
+e. RSI (Relative Strength Indicator) Ratio
+f. MACD (Moving Average Convergence Divergence)
+g. RC (Rate of Change)
+
+3. Daily Strategy:
+- Predict the closing price 7 days ahead
+- Long if closing price > next day's opening price
+- Neutral otherwise
+- Close position from 7 days ago
+
+4. 2-Step Clustering using KMeans and Gaussian Mixture:
+- Winsorise top and bottom 10% of each technical indicators
+- Feature engineer an "aggregate" variable by multiplying all the technical indicators together and with log-return
+- Apply MinMaxScaler to "aggregate" variable
+- Initialise clustering using KMeans for 1 to 50 clusters based on "aggregate" across time
+- Determine optimal number of clusters using Elbow Method and Silhouette Scores
+- Apply Gaussian Mixture clustering
+- For each level-1 cluster, repeat the clustering based on OneHotEncoded "industry" variable
+- Feature engineer weekly lagged values for each technical indicators and log-return
+
+5. Training RandomForestClassifier Model:
+- Predictor variables - current and intra-week lagged technical indicators + log-return
+- Response variable - "Target_Direction" = 1 if Close +7d > Open +1d
+- Train dataset: 3/1/2011 to 31/12/2015
+- Test dataset: 4/1/2016 to 30/12/2015
+- Plot validation curve to estimate parameter ranges
+- For each level-2 cluster, fit model using GridSearch Cross Validation
+
+6. Making Predictions:
+- Use each cluster-specific model to predict probability of Close +7d > Open +1d for each ticker in cluster
+- Long the top 10 tickers with highest probabilities
+
+7. Performance:
+- 46% train accuracy
+- 44% test accuracy
+- SP500 Buy-and-Hold test cumulative returns = 180%
+- Strategy test cumulative returns = 132%
