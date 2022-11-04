@@ -17,5 +17,5 @@ SP500_TA.ipynb:
 - Saves technical indicator into SP500_TI.csv
 
 Strategies:
-- 2-step KMeans and Gaussian Mixture Clustering with RandomForest classification
-- Dynamic Time Warp Clustering with RandomForest classification
+- 2-step KMeans (Euclidean distance) and Gaussian Mixture Clustering with RandomForest classification
+- 2-step KMeans (DTW distance) and Gaussian Mixture Clustering with RandomForest classification
