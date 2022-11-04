@@ -1,4 +1,4 @@
-2-step KMeans and Gaussian Mixture Clustering with RandomForest classification
+2-step KMeans and Gaussian Mixture Clustering with RandomForest classification using Euclidean distance
 
 Modified from: https://towardsdatascience.com/implementation-of-technical-indicators-into-a-machine-learning-framework-for-quantitative-trading-44a05be8e06
 
@@ -48,4 +48,4 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - 92.1% train accuracy
 - 55.2% test accuracy
 - SP500 Buy-and-Hold test cumulative returns = 1.860
-- Strategy test cumulative returns = 1.196
+- Strategy test cumulative returns = 1.442
