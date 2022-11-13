@@ -45,7 +45,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Long the top 10 tickers with highest probabilities
 
 7. Performance:
-- 92.1% train accuracy
-- 55.2% test accuracy
+- 91.5% train accuracy
+- 55.8% test accuracy
 - SP500 Buy-and-Hold test cumulative returns = 1.860
-- Strategy test cumulative returns = 1.442
+- Strategy test cumulative returns = 1.308
