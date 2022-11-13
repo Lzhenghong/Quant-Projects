@@ -44,6 +44,6 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 
 7. Performance:
 - 93.7% train accuracy
-- 55.2% test accuracy
+- 55.6% test accuracy
 - SP500 Buy-and-Hold test cumulative returns = 1.860
-- Strategy test cumulative returns = 1.325
+- Strategy test cumulative returns = 1.251
