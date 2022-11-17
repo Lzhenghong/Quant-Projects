@@ -34,7 +34,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Predictor variables - current and 6-days lagged technical indicators + log-return
 - Response variable - "Target_Direction" = 1 if Close +7d > Open +1d
 - Train dataset: 3/1/2011 to 31/12/2015
-- Test dataset: 4/1/2016 to 30/12/2015
+- Test dataset: 4/1/2016 to 30/12/2020
 - Plot validation curve to estimate parameter ranges
 - For each level-2 cluster, fit model using GridSearch Cross Validation
 
