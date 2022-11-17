@@ -16,7 +16,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - MACD (Moving Average Convergence Divergence)
 - RC (Rate of Change)
 
-3. Daily Strategy:
+3. Weekly Strategy:
 - Predict the closing price 7 days ahead
 - Long if closing price > next day's opening price
 - Neutral otherwise
@@ -31,7 +31,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Feature engineer weekly lagged values for each technical indicators and log-return
 
 5. Training RandomForestClassifier Model:
-- Predictor variables - current and intra-week lagged technical indicators + log-return
+- Predictor variables - current and 6-days lagged technical indicators + log-return
 - Response variable - "Target_Direction" = 1 if Close +7d > Open +1d
 - Train dataset: 3/1/2011 to 31/12/2015
 - Test dataset: 4/1/2016 to 30/12/2015
@@ -40,10 +40,12 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 
 6. Making Predictions:
 - Use each cluster-specific model to predict probability of Close +7d > Open +1d for each ticker in cluster
-- Long the top 10 tickers with highest probabilities
+- Long the top 20 tickers with highest probabilities
 
 7. Performance:
-- 93.7% train accuracy
-- 55.6% test accuracy
-- SP500 Buy-and-Hold test cumulative returns = 1.860
-- Strategy test cumulative returns = 1.251
+- 91.3% train accuracy
+- 56.1% test accuracy
+- Buy-and-Hold gross returns = 1.860
+- Strategy gross returns = 3.192
+- Buy-and-Hold Sharpe ratio = 41.2
+- Strategy Sharpe ratio = 29.4
