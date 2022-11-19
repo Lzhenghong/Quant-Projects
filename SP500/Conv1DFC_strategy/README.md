@@ -11,14 +11,14 @@ Modified from: https://arxiv.org/pdf/2103.14080.pdf
 
 3. Strategy:
 - Predict the closing price 7 days ahead
-- Long for next 7 days if P(closing price > next day's opening price) >= upper threshold
-- Short for next 7 days if P(closing price > next day's opening price) <= lower threshold
+- Long for next 7 days if closing price > next day's opening price
+- Short for next 7 days if closing price > 2% lower than next day's opening price
 - Neutral otherwise
 - Close position after 7 days if any
 
 4. Training DNN Model:
 - Predictor variables - current and 13-days lagged closing prices + volume
-- Response variable - "Target_Direction" = 1 if Close +7d > Open +1d
+- Response variable - "Target_Direction" = 1 if long, 0 if neutral, -1 if short
 - Train dataset: 3/1/2011 to 31/12/2014
 - Validation dataset: 2/1/2015 to 31/12/2015
 - Fit data in batches of size 32
@@ -35,13 +35,11 @@ Modified from: https://arxiv.org/pdf/2103.14080.pdf
 
 6. Making Predictions:
 - Test dataset: 4/1/2016 to 31/12/2020
-- Predict P(Close +7d > Open +1d)
-- Upper threshold is 80th percentile of probabilities
-- Lower threshold is 20th percentile of probabilities
+- Predict "Target_Direction"
 
 7. Performance:
-- 40.0% test accuracy
+- 61.0% test accuracy
 - Buy-and-Hold gross returns = 1.860
-- Strategy gross returns = 2.061
-- Buy-and-Hold Sharpe ratio = 37.2
-- Strategy Sharpe ratio = 37.7
+- Strategy gross returns = 2.111
+- Buy-and-Hold Sharpe ratio = 43.3
+- Strategy Sharpe ratio = 43.5
