@@ -42,6 +42,6 @@ Modified from: https://arxiv.org/pdf/2103.14080.pdf
 7. Performance:
 - 40.0% test accuracy
 - Buy-and-Hold gross returns = 1.860
-- Strategy gross returns = 2.209
-- Buy-and-Hold Sharpe ratio = 48.5
-- Strategy Sharpe ratio = 48.9
+- Strategy gross returns = 2.061
+- Buy-and-Hold Sharpe ratio = 37.2
+- Strategy Sharpe ratio = 37.7
