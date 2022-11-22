@@ -47,5 +47,5 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - 56.1% test accuracy
 - Buy-and-Hold gross returns = 1.860
 - Strategy gross returns = 3.192
-- Buy-and-Hold Sharpe ratio = 41.2
-- Strategy Sharpe ratio = 29.4
+- Buy-and-Hold Sharpe ratio = 0.167
+- Strategy Sharpe ratio = 0.207
