@@ -28,3 +28,4 @@ Strategies:
 - 2-step KMeans (Euclidean distance) and Gaussian Mixture Clustering with RandomForest classification (28.4% annualised return)
 - 2-step KMeans (DTW distance) and Gaussian Mixture Clustering with RandomForest classification (43.8% annualised return)
 - Convolutional and Fully-Connected Deep Neural Network (22.2% annualised return)
+- KMedoids (DTW distance) with LSTM (30.0%)

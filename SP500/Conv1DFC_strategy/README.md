@@ -22,7 +22,7 @@ Modified from: https://arxiv.org/pdf/2103.14080.pdf
 - Train dataset: 3/1/2011 to 31/12/2014
 - Validation dataset: 2/1/2015 to 31/12/2015
 - Fit data in batches of size 32
-- Set early stopping if validation loss does not increase after 10 epochs
+- Set early stopping if validation loss does not decrease after 10 epochs
 - Combine train and validation datasets and refit the model until stopped epoch
 
 5. DNN Architecture:
