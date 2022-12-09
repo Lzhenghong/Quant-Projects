@@ -4,10 +4,12 @@ Modified from: https://arxiv.org/pdf/2103.14080.pdf
 
 1. Data Collection:
 - Scraped ticker data for each company in SP500 using BeautifulSoup
-- Loaded SPY and each SP500 ticker OHLC prices from 1/1/2011 to 31/12/2020 using yfinance 
+- Loaded SPY and each SP500 ticker OHLC prices from 1/1/2011 to 28/10/2022 using yfinance 
 
 2. Data Preprocessing:
 - Scale volume down to same magnitude as closing price
+- Period 1 back-testing: 4/1/2016 to 31/12/2020
+- Period 2 back-testing: 4/1/2016 to 28/10/2022
 
 3. Strategy:
 - Predict the closing price 7 days ahead
@@ -34,12 +36,20 @@ Modified from: https://arxiv.org/pdf/2103.14080.pdf
 - RMSprop optimizer
 
 6. Making Predictions:
-- Test dataset: 4/1/2016 to 31/12/2020
+- Test dataset (period 1): 4/1/2016 to 31/12/2020
+- Test dataset (period 2): 4/1/2016 to 28/10/2022
 - Predict "Target_Direction"
 
-7. Performance:
+7. Performance (period 1):
 - 61.0% test accuracy
 - Buy-and-Hold gross returns = 1.860
 - Strategy gross returns = 2.111
-- Buy-and-Hold Sharpe ratio = 0.198
+- Buy-and-Hold Sharpe ratio = 0.167
 - Strategy Sharpe ratio = 0.223
+
+8. Performance (period 2):
+- 59.5% test accuracy
+- Buy-and-Hold gross returns = 1.935
+- Strategy gross returns = 2.154
+- Buy-and-Hold Sharpe ratio = 0.134
+- Strategy Sharpe ratio = 0.166
