@@ -2,7 +2,6 @@
 
 # 1. Training periods:
 - 2011-2015: low rates, steady growth
-- 2005-2015: includes Global Financial Crisis recession
 
 # 2. Testing periods:
 - Period 1 2016-2020: low rates, steady growth, Covid-19 recession
