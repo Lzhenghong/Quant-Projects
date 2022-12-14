@@ -42,6 +42,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Long the top 20 tickers with highest probabilities
 
 7. Performance:
+
 |Jan 2016 - Dec 2020|Buy-and-hold|Strategy|
 |---|---|---|
 |Hit rate|-|56.1%|
