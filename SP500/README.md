@@ -1,42 +1,33 @@
-This is a repository of SP500 trading strategies for personal projects and internship.
+# This is a repository of SP500 trading strategies for personal projects and internship.
 
-SP500_Companies.ipynb:
-- Scrapes 500 tickers in SP500 index using BeautifulSoup
-- Loads OHLC prices for each ticker using yfinance
-- Saves ticker OHLC prices into SP500_Companies.csv
-
-SP500_TA.ipynb:
-- Calculates technical indicators for each ticker using 5 and 15 days periods
-- SMA Ratio
-- SMA Volume Ratio
-- ATR (Average True Range) Ratio
-- ADX (Average Directional Index) Ratio
-- RSI (Relative Strength Indicator) Ratio
-- MACD (Moving Average Convergence Divergence)
-- RC (Rate of Change)
-- Saves technical indicator into SP500_TI.csv
-
-Training periods:
+# 1. Training periods:
 - 2011-2015: low rates, steady growth
 - 2005-2015: includes Global Financial Crisis recession
 
-Testing periods:
+# 2. Testing periods:
 - Period 1 2016-2020: low rates, steady growth, Covid-19 recession
 - Period 2 2016-2022: includes record high rates, cost-push inflation, bearish outlook
 
-Objective:
-- Beat buy-and-hold strategy
-- 17.2% annualised return in period 1
-- 13.4% annualised return in period 2
+# 3. Objective:
+- Beat buy-and-hold strategy in gross returns and/or Sharpe ratio
 
-Period 1 strategies performance:
-- 2-step KMeans (Euclidean distance) and Gaussian Mixture Clustering with RandomForest classification (28.4% annualised return)
-- 2-step KMeans (DTW distance) and Gaussian Mixture Clustering with RandomForest classification (43.8% annualised return)
-- Convolutional and Fully-Connected Deep Neural Network (22.2% annualised return)
-- KMedoids (DTW distance) Clustering with LSTM (30.0% annualised return)
+# 4. Strategies:
+- 2-Step KMeans (Euclidean Distance) and Gaussian Mixture Clustering with RandomForest Classification for Signal Prediction
+- 2-Step KMeans (DTW Distance) and Gaussian Mixture Clustering with RandomForest Classification for Signal Prediction
+- Convolutional and Fully-Connected Deep Neural Network for Signal Prediction
+- KMedoids (DTW Distance) Clustering with LSTM for Price Prediction
+- Cointegration Pairs Trading with LSTM for Signal Prediction
 
-Period 2 strategies performance:
-- 2-step KMeans (Euclidean distance) and Gaussian Mixture Clustering with RandomForest classification (% annualised return)
-- 2-step KMeans (DTW distance) and Gaussian Mixture Clustering with RandomForest classification (% annualised return)
-- Convolutional and Fully-Connected Deep Neural Network (16.5% annualised return)
-- KMedoids (DTW distance) Clustering with LSTM (% annualised return)
+# 5. Performance Summary:
+
+|Period 1|Buy-and-hold|KMeans-GMM-RF (Euclidean)|KMeans-GMM-RF (DTW)|Conv1DFC|KMedoids-LSTM|Cointegration-LSTM|
+|---|---|---|---|---|---|---|
+|Gross returns|1.860|2.672|2.616|2.111|2.412|1.521|
+|Annualised returns|17.2%|33.4%|32.3%|22.2%|28.2%|10.4%|
+|Sharpe ratio|0.167|0.207|0.208|0.223|0.129|0.169|
+
+|Period 2|Buy-and-hold|KMeans-GMM-RF (Euclidean)|KMeans-GMM-RF (DTW)|Conv1DFC|KMedoids-LSTM|Cointegration-LSTM|
+|---|---|---|---|---|---|---|
+|Gross returns|1.935|2.909|2.994|2.154|2.678|1.680|
+|Annualised returns|13.7%|28.0%|29.2%|16.9%|24.6%|9.96%|
+|Sharpe ratio|0.134|0.168|0.175|0.166|0.114|0.145|
