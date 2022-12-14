@@ -4,7 +4,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 
 # 1. Data Collection:
 - Scraped ticker data for each company in SP500 using BeautifulSoup
-- Loaded SPY and each SP500 ticker OHLC prices from 1/1/2011 to 31/12/2020 using yfinance 
+- Loaded SPY and each SP500 ticker OHLC prices using yfinance 
 
 # 2. Data Preprocessing:
 - Calculated the following technical indicators for each ticker using 5 and 15 days period
