@@ -16,7 +16,7 @@
 - 2-Step KMeans (DTW Distance) and Gaussian Mixture Clustering with RandomForest Classification for Signal Prediction
 - Convolutional and Fully-Connected Deep Neural Network for Signal Prediction
 - KMedoids (DTW Distance) Clustering with LSTM for Price Prediction
-- Cointegration Pairs Trading with LSTM for Signal Prediction
+- Cointegrated Pairs Trading with LSTM for Signal Prediction
 
 # 5. Performance Summary:
 
