@@ -1,7 +1,6 @@
 This is a repository of quantitative finance projects.
 
 Upcoming progress:
-- Combination of strategies
-- Fine-tunining of Machine Learning and Neural Network strategies
-- Implementing Ichimoku Cloud strategies
-- Finding optimal parameters for strategies
+- Quant credit strategies for UST and CDX
+- Risk management measures for equity indices trading strategies
+- Option greeks, pricing and hedging
