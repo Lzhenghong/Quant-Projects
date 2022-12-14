@@ -54,7 +54,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 |---|---|---|
 |Hit rate|-|55.4%|
 |Gross returns|1.935|2.909|
-|Annualised returns|13.4%|27.3%|
+|Annualised returns|13.7%|28.0%|
 |Sharpe ratio|0.134|0.168|
 
 ![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/SP500/KMeans_GMM_RF_strategy/Long-only%20PnL.png)
