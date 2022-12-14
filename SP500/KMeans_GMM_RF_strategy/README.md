@@ -4,7 +4,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 
 1. Data Collection:
 - Scraped ticker data for each company in SP500 using BeautifulSoup
-- Loaded SPY and each SP500 ticker OHLC prices from 1/1/2011 to 31/12/2020 using yfinance 
+- Loaded SPY and each SP500 ticker OHLC prices using yfinance 
 
 2. Data Preprocessing:
 - Calculated the following technical indicators for each ticker using 5 and 15 days period
@@ -23,7 +23,6 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Close position from 7 days ago
 
 4. 2-Step Clustering using KMeans and Gaussian Mixture:
-- Winsorise top and bottom 10% of each technical indicators
 - Feature engineer an "aggregate" variable by multiplying all the technical indicators together and with log-return
 - Apply MinMaxScaler to "aggregate" variable
 - Initialise clustering using KMeans for 1 to 50 clusters based on "aggregate" across time
@@ -36,8 +35,6 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Predictor variables - current and 6-days lagged technical indicators + log-return
 - Response variable - "Target_Direction" = 1 if Close +7d > Open +1d
 - Train dataset: 3/1/2011 to 31/12/2015
-- Test dataset: 4/1/2016 to 30/12/2020
-- Plot validation curve to estimate parameter ranges
 - For each level-2 cluster, fit model using GridSearch Cross Validation
 
 6. Making Predictions:
@@ -45,9 +42,16 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Long the top 20 tickers with highest probabilities
 
 7. Performance:
-- 88.8% train accuracy
-- 55.3% test accuracy
-- Buy-and-Hold gross returns = 1.860
-- Strategy cumulative returns = 2.419
-- Buy-and-Hold Sharpe ratio = 0.167
-- Strategy Sharpe ratio = 0.175
+|Jan 2016 - Dec 2020|Buy-and-hold|Strategy|
+|---|---|---|
+|Hit rate|-|56.1%|
+|Gross returns|1.860|2.672|
+|Annualised returns|17.2%|33.4%|
+|Sharpe ratio|0.167|0.207|
+
+|Jan 2016 - Oct 2022|Buy-and-hold|Strategy|
+|---|---|---|
+|Hit rate|-|55.4%|
+|Gross returns|1.935|2.909|
+|Annualised returns|13.4%|27.3%|
+|Sharpe ratio|0.134|0.168|
