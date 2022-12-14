@@ -1,4 +1,4 @@
-# This is a repository of SP500 trading strategies for personal projects and internship.
+# SP500 Trading Strategies
 
 # 1. Training periods:
 - 2011-2015: low rates, steady growth
