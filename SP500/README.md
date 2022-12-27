@@ -8,19 +8,21 @@
 - Period 1 2016-2020: gradual rates rise, steady growth, 2018 Crypto crash and 2020 Covid-19 recession
 - Period 2 2016-2022: includes record high rates, post Ukraine invasion stagflation
 
+# 3. Macroeconomic Regimes
+
 ![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/SP500/SP500%20macro%20chart.png)
 
-# 3. Objective:
+# 4. Objective:
 - Beat buy-and-hold strategy in gross returns and/or Sharpe ratio
 
-# 4. Strategies:
+# 5. Strategies:
 - 2-Step KMeans (Euclidean Distance) and Gaussian Mixture Clustering with RandomForest Classification for Signal Prediction
 - 2-Step KMeans (DTW Distance) and Gaussian Mixture Clustering with RandomForest Classification for Signal Prediction
 - Convolutional and Fully-Connected Deep Neural Network for Signal Prediction
 - KMedoids (DTW Distance) Clustering with LSTM for Price Prediction
 - Cointegrated Pairs Trading with LSTM for Signal Prediction
 
-# 5. Performance Summary:
+# 6. Performance Summary:
 
 |Period 1|Buy-and-hold|KMeans-GMM-RF (Euclidean)|KMeans-GMM-RF (DTW)|Conv1DFC|KMedoids-LSTM|Cointegration-LSTM|
 |---|---|---|---|---|---|---|
