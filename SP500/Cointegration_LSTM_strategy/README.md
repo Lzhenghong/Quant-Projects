@@ -19,38 +19,36 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Obtain top 10 cointegrated pairs based on p-values
 
 # 4. Training LSTM Model:
+- Indicators - spread, 30-days spread difference, spread SMA ratio, spread RSI ratio, spread MACD
 - Fit an LSTM model for each cointegrated pair
-- Predictor variables - current and 99-days lagged spread difference
+- Predictor variables - current and 30-days lagged indicators
 - Response variable - "signal" = 1 if long, 0 if neutral, -1 if short
-- Train dataset: 3/1/2011 to 31/12/2014
-- Validation dataset: 1/1/2015 to 31/12/2015
-- Set early stopping if validation loss does not decrease after 3 epochs
-- Combine train and validation datasets and refit model until stopped epoch
+- Train dataset: 3/1/2011 to 31/12/2015
+- Train for 15 epochs for each pair
 
 # 6. LSTM Architecture:
-- Input layer of (100,)-dimension
-- Lambda layer to transform output to (1, 100, 1)-dimension
+- Input layer of (30, 5)-dimension
 - LSTM layer with 128 neurons, ReLu activation
-- Output layer of (1,)-dimension, linear activation
+- Output layer of (3,)-dimension, linear activation
 - Adam  optimizer
 
 # 7. Making Predictions:
-- For each pair, predict the "signal" variable and rebalance the portfolio every 7 days
+- For each pair, predict the "signal" variable and rebalance the portfolio every 30 days
 
 # 8. Performance:
 
 |Jan 2016 - Dec 2020|Buy-and-hold|Strategy|
 |---|---|---|
-|Hit rate|-|40.9%|
-|Gross returns|1.860|1.521|
-|Annualised returns|17.2%|10.4%|
-|Sharpe ratio|0.167|0.160|
+|Hit rate|-|87.9%|
+|Gross returns|1.860|4.230|
+|Annualised returns|17.2%|64.6%|
+|Sharpe ratio|0.376|1.198|
 
 |Jan 2016 - Oct 2022|Buy-and-hold|Strategy|
 |---|---|---|
-|Hit rate|-|40.2%|
-|Gross returns|1.935|1.680|
-|Annualised returns|13.7%|9.96%|
-|Sharpe ratio|0.134|0.145|
+|Hit rate|-|87.7%|
+|Gross returns|1.935|8.491|
+|Annualised returns|13.7%|109.7%|
+|Sharpe ratio|0.302|1.224|
 
 ![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/SP500/Cointegration_LSTM_strategy/spread%20trading%20PnL.png)
