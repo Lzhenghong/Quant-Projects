@@ -21,9 +21,9 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 # 4. Training LSTM Model:
 - Indicators - spread, 30-days spread difference, spread SMA ratio, spread RSI ratio, spread MACD
 - Fit an LSTM model for each cointegrated pair
-- Predictor variables - current and 30-days lagged indicators
+- Predictor variables - normalised current and 30-days lagged indicators
 - Response variable - "signal" = 1 if long, 0 if neutral, -1 if short
-- Train dataset: 3/1/2011 to 31/12/2015
+- Train dataset: 3/1/2005 to 31/12/2015
 - Train for 15 epochs for each pair
 
 # 6. LSTM Architecture:
