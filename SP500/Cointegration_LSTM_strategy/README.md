@@ -51,4 +51,4 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 |Annualised returns|13.7%|109.7%|
 |Sharpe ratio|0.302|1.224|
 
-![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/SP500/Cointegration_LSTM_strategy/spread%20trading%20PnL.png)
+![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/SP500/Cointegration_LSTM_strategy/pairs%20trading%20PnL.png)
