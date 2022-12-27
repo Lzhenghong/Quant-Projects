@@ -1,11 +1,14 @@
 # SP500 Trading Strategies
 
 # 1. Training periods:
-- 2011-2015: low rates, steady growth
+- 2011-2015: low rates, post Global Financial Crisis recovery
+- 2005-2015: includes 2008 Global Financial Crisis and 2010 Eurozone Crisis
 
 # 2. Testing periods:
-- Period 1 2016-2020: gradual rates rise, steady growth, Covid-19 recession
-- Period 2 2016-2022: includes record high rates, cost-push inflation, bearish outlook
+- Period 1 2016-2020: gradual rates rise, steady growth, 2018 Crypto crash and 2020 Covid-19 recession
+- Period 2 2016-2022: includes record high rates, post Ukraine invasion stagflation
+
+![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/SP500/SP500%20macro%20chart.png)
 
 # 3. Objective:
 - Beat buy-and-hold strategy in gross returns and/or Sharpe ratio
