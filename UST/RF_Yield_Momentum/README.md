@@ -53,13 +53,13 @@ Modified from: https://www.aqr.com/Insights/Research/Journal-Article/Forecasting
 |Hit rate|-|50.0%|
 |Gross returns|1.084|0.833|
 |Annualised returns|1.68%|-3.34%|
-|Sharpe ratio|0.113 (30D)|-0.102 (30D)|
+|Sharpe ratio|0.113|-0.102|
 
 |Jan 2016 - Dec 2022|Buy-and-hold|Strategy|
 |---|---|---|
 |Hit rate|-|53.4%|
 |Gross returns|0.924|1.053|
 |Annualised returns|-1.09%|0.757%|
-|Sharpe ratio|-0.102 (30D)|0.043 (30D)|
+|Sharpe ratio|-0.102|0.043|
 
-![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/UST/RF_Yield_Momentum/QE%20%20QT%20PnL.png)
+![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/UST/RF_Yield_Momentum/QE%20QT%20PnL.png)
