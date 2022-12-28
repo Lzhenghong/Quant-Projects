@@ -45,16 +45,16 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 
 |Jan 2016 - Dec 2020|Buy-and-hold|Strategy|
 |---|---|---|
-|Hit rate|-|56.1%|
-|Gross returns|1.860|2.672|
-|Annualised returns|17.2%|33.4%|
-|Sharpe ratio|0.167|0.207|
+|Hit rate|-|54.25%|
+|Gross returns|1.860|1.809|
+|Annualised returns|17.2%|16.2%|
+|Sharpe ratio|0.167|0.136|
 
 |Jan 2016 - Oct 2022|Buy-and-hold|Strategy|
 |---|---|---|
-|Hit rate|-|55.4%|
-|Gross returns|1.935|2.909|
-|Annualised returns|13.7%|28.0%|
-|Sharpe ratio|0.134|0.168|
+|Hit rate|-|54.39%|
+|Gross returns|1.935|2.321|
+|Annualised returns|13.7%|19.3%|
+|Sharpe ratio|0.134|0.139|
 
 ![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/SP500/KMeans_GMM_RF_strategy/Long-only%20PnL.png)
