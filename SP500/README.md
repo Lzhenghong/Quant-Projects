@@ -26,12 +26,12 @@
 
 |Period 1|Buy-and-hold|KMeans-GMM-RF (Euclidean)|KMeans-GMM-RF (DTW)|Conv1DFC|KMedoids-LSTM|Cointegration-LSTM|
 |---|---|---|---|---|---|---|
-|Gross returns|1.860|2.672|2.616|2.111|2.412|4.230|
-|Annualised returns|17.2%|33.4%|32.3%|22.2%|28.2%|64.6%|
-|Sharpe ratio|0.167|0.207|0.208|0.223|0.129|1.198|
+|Gross returns|1.860|1.809|2.616|2.111|1.983|4.230|
+|Annualised returns|17.2%|16.2%|32.3%|22.2%|19.7%|64.6%|
+|Sharpe ratio|0.167 (7D)/0.376 (30D)|0.136|0.208|0.223|0.413|1.198|
 
 |Period 2|Buy-and-hold|KMeans-GMM-RF (Euclidean)|KMeans-GMM-RF (DTW)|Conv1DFC|KMedoids-LSTM|Cointegration-LSTM|
 |---|---|---|---|---|---|---|
-|Gross returns|1.935|2.909|2.994|2.154|2.678|8.491|
-|Annualised returns|13.7%|28.0%|29.2%|16.9%|24.6%|109.7%|
-|Sharpe ratio|0.134 (7D)/0.302 (30D)|0.168|0.175|0.166|0.114|1.224|
+|Gross returns|1.935|2.321|2.994|2.154|2.084|8.491|
+|Annualised returns|13.7%|19.3%|29.2%|16.9%|15.9%|109.7%|
+|Sharpe ratio|0.134 (7D)/0.302 (30D)|0.139|0.175|0.166|0.337|1.224|
