@@ -20,13 +20,13 @@
 # 6. Performance Summary:
 
 |Period 1|iShares ETF|RF-Momentum|
-|---|---|---|---|---|---|---|
+|---|---|---|
 |Gross returns|1.084|0.833|
 |Annualised returns|1.68%|-3.34%|
 |Sharpe ratio|0.113|-0.102|
 
 |Period 2|iShares ETF|RF-Momentum|
-|---|---|---|---|---|---|---|
+|---|---|---|
 |Gross returns|0.924|1.053|
 |Annualised returns|-1.09%|0.757%|
 |Sharpe ratio|0.102|0.043|
