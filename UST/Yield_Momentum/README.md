@@ -23,6 +23,7 @@ Modified from: https://www.aqr.com/Insights/Research/Journal-Article/Forecasting
 # 4. Yield Curve Factors:
 - Implied 1-month to 20-years spot rates
 - 5-year, 7-year, 10-year and 20-year real par rates
+- 3M-5Y, 5Y-7Y, 7Y-10Y, 10Y-20Y term spreads
 
 # 5. Momentum Factors
 - "Inverse wealth" = 1 if current S&P 500 index > past 180-days weighted average 
