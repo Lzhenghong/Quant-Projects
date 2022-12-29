@@ -50,16 +50,16 @@ Modified from: https://www.aqr.com/Insights/Research/Journal-Article/Forecasting
 
 |Jan 2016 - Dec 2020|Buy-and-hold|Strategy|
 |---|---|---|
-|Hit rate|-|95.2%|
-|Gross returns|1.084|1.070|
-|Annualised returns|1.68%|1.40%|
-|Sharpe ratio|0.113|0.155|
+|Hit rate|-|88.1%|
+|Gross returns|1.084|0.938|
+|Annualised returns|1.68%|-1.24%|
+|Sharpe ratio|0.113|-0.137|
 
 |Jan 2016 - Dec 2022|Buy-and-hold|Strategy|
 |---|---|---|
-|Hit rate|-|93.1%|
-|Gross returns|0.924|1.221|
-|Annualised returns|-1.09%|3.16%|
-|Sharpe ratio|-0.102|0.309|
+|Hit rate|-|91.4%|
+|Gross returns|0.924|1.070|
+|Annualised returns|-1.09%|1.00%|
+|Sharpe ratio|-0.102|0.104|
 
 ![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/UST/Yield_Curve_Level_Mean_Reversion/level%20mean%20reversion%20pnl.png)
