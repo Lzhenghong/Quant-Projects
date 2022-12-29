@@ -8,7 +8,7 @@ Modified from: https://towardsdatascience.com/implementation-of-technical-indica
 - Loaded SPY and each SP500 ticker OHLC prices using yfinance
 
 # 2. Weekly Strategy:
-- For each cointegrated pair, predict the spread 7 days ahead
+- For each cointegrated pair, predict the spread 30 days ahead
 - Calculate the difference between current and predicted spread
 - Short if difference > 0.5 * 30-days SMA of standard deviation of positive difference
 - Long if difference < -0.5 * 30-days SMA of standard deviation of negative difference
