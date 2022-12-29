@@ -62,4 +62,4 @@ Modified from: https://www.aqr.com/Insights/Research/Journal-Article/Forecasting
 |Annualised returns|-1.09%|0.443%|
 |Sharpe ratio|-0.102|0.033|
 
-![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/UST/RF_Yield_Momentum/QE%20QT%20PnL.png)
+![alt text](https://github.com/Lzhenghong/Quant-Projects/blob/main/UST/Yield_Momentum/QE%20QT%20PnL.png)
