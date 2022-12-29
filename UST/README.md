@@ -24,7 +24,7 @@
 |---|---|---|---|
 |Gross returns|1.084|0.792|0.938|
 |Annualised returns|1.68%|-4.16%|-1.24%|
-|Sharpe ratio|0.113|-0.153|0.137|
+|Sharpe ratio|0.113|-0.153|-0.137|
 
 |Period 2|iShares ETF|Yield-Momentum|Level Mean Reversion|
 |---|---|---|---|
