@@ -21,7 +21,6 @@ Modified from: https://www.aqr.com/Insights/Research/Journal-Article/Forecasting
 - Close position from 30 days ago
 
 # 4. Yield Curve Factors:
-- Implied 1-month to 20-years spot rates
 - 5-year, 7-year, 10-year and 20-year real par rates
 - Spot curve level spread from reference spot curve
 
@@ -31,9 +30,10 @@ Modified from: https://www.aqr.com/Insights/Research/Journal-Article/Forecasting
 - Effective Fed Fund rates
 
 # 6. Regime Switching
-- "Fed regime" = 0 for periods of QE, 1 for periods of QT
-- periods of QE - 2007-2015 GFC and post-GFC, 2019 Powell Pirouette, 2020 Covid recession
+- "Fed regime" = 0 for periods of QE, 1 for periods of QT, 2 for periods of constant low rates
+- periods of QE - 2007-2009 GFC, 2019 Powell Pirouette, 2020 Covid recession
 - Periods of QT - 2005-2007 US Housing Boom, 2016-2019 bull market, 2022 post-Ukraine Fed hike
+- periods of constant low rates - 2009-2015 post-GFC recovery
 
 # 7. Training RandomForestClassifier Model:
 - Predictor variables - current and 99-days lagged yield curve, momentum and value factors
