@@ -20,14 +20,14 @@
 
 # 6. Performance Summary:
 
-|Period 1|iShares ETF|Yield-Momentum|Level Mean Reversion|
-|---|---|---|---|
-|Gross returns|1.084|0.792|0.8527|
-|Annualised returns|1.68%|-4.16%|-2.95%|
-|Sharpe ratio|0.113|-0.153|-0.145|
+|Period 1|iShares ETF|Yield-Momentum|Level Mean Reversion|Slope Mean Reversion|
+|---|---|---|---|---|
+|Gross returns|1.084|0.792|0.8527|0.8526|
+|Annualised returns|1.68%|-4.16%|-2.95%|-2.95%|
+|Sharpe ratio|0.113|-0.153|-0.145|-0.145|
 
-|Period 2|iShares ETF|Yield-Momentum|Level Mean Reversion|
-|---|---|---|---|
-|Gross returns|0.924|1.031|1.080|
-|Annualised returns|-1.09%|0.443%|1.14%|
-|Sharpe ratio|0.102|0.033|0.064|
+|Period 2|iShares ETF|Yield-Momentum|Level Mean Reversion|Slope Mean Reversion|
+|---|---|---|---|---|
+|Gross returns|0.924|1.031|1.080|1.083|
+|Annualised returns|-1.09%|0.443%|1.14%|1.19%|
+|Sharpe ratio|0.102|0.033|0.064|0.065|
